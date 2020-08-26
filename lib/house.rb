@@ -48,7 +48,23 @@ class House
     end
   end
 
+  def rooms_by_category
+    keys = get_keys
+    rooms_by_category = Hash.new
+
+    rooms.each do |room|
+      keys.each do |key|  
+        rooms_by_category[key] = [] unless rooms_by_category.key?(key) 
+        rooms_by_category[key].push(room) if      
+      end
+    end  
+  end
+
   private
 
   attr_writer :rooms
+
+  def get_keys
+    rooms.map { |room| room.category }.uniq
+  end
 end
