@@ -34,7 +34,7 @@ class HouseTest < Minitest::Test
     assert_equal false, house.above_market_average?
   end
 
-  def test_it_has_room_categories
+  def test_it_can_find_rooms_from_categories
     house = House.new("$400000", "123 sugar lane")
     room_1 = Room.new(:bedroom, 10, '13')
     room_2 = Room.new(:bedroom, 11, '15')
@@ -85,5 +85,21 @@ class HouseTest < Minitest::Test
     house.add_room(room_4)
 
     assert_equal 210.53, house.price_per_sqaure_foot
+  end
+
+  def test_it_can_sort_by_area
+    house = House.new("$400000", "123 sugar lane")
+    room_1 = Room.new(:bedroom, 10, '13')
+    room_2 = Room.new(:bedroom, 11, '15')
+    room_3 = Room.new(:living_room, 25, '15')
+    room_4 = Room.new(:basement, 30, '41')
+
+    house.add_room(room_4)
+    house.add_room(room_2)
+    house.add_room(room_1)
+    house.add_room(room_3)
+
+    assert_equal [room_4, room_2, room_1, room_3], house.rooms
+    assert_equal [room_1, room_2, room_3, room_4], house.rooms_sorted_by_area
   end
 end
