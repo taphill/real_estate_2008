@@ -30,6 +30,14 @@ class House
     total_area
   end
 
+  def details
+    details = {}
+    details['price'] = price
+    details['address'] = address
+
+    return details
+  end
+
   private
 
   attr_writer :rooms
