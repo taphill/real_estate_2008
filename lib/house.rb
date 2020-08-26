@@ -38,6 +38,10 @@ class House
     return details
   end
 
+  def price_per_sqaure_foot
+    (price.to_f / area.to_f).round(2)
+  end
+
   private
 
   attr_writer :rooms
