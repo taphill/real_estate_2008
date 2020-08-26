@@ -35,11 +35,17 @@ class House
     details['price'] = price
     details['address'] = address
 
-    return details
+    details
   end
 
   def price_per_sqaure_foot
     (price.to_f / area.to_f).round(2)
+  end
+
+  def rooms_sorted_by_area
+    rooms.sort_by do |room|
+      room.area
+    end
   end
 
   private
