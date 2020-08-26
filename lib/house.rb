@@ -11,6 +11,16 @@ class House
     self.rooms << room
   end
 
+  def above_market_average?
+    price > 500_000
+  end
+
+  def rooms_from_category(room_type)
+    rooms.find_all do |room|
+      room.category == room_type
+    end
+  end
+
   private
 
   attr_writer :rooms
