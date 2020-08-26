@@ -21,6 +21,15 @@ class House
     end
   end
 
+  def area
+    total_area = 0
+    rooms.each do |room|
+      total_area += room.area
+    end
+  
+    total_area
+  end
+
   private
 
   attr_writer :rooms
